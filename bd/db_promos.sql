@@ -69,8 +69,7 @@ IF NOT EXISTS(SELECT * FROM sysobjects WHERE name='tb_cartela' and xtype='U')
 		idpromo int,
 		idlojista int,
 		idcliente int,
-		--  qtdadiq int DEFAULT 0, /*quantidade adquirida de carimbos nessa cartela*/
-		--  trocado char(1) DEFAULT 0, /*NÃO TROCADO é 0 e TROCADO é 1 (true e false)*/
+		adiquirido int DEFAULT 0, /*quantidade adquirida de carimbos nessa cartela*/
 		datatroca date,
 		FOREIGN KEY(idpromo) REFERENCES tb_promo(id),
 		FOREIGN KEY(idlojista) REFERENCES tb_lojista(id),
@@ -84,10 +83,12 @@ IF NOT EXISTS(SELECT * FROM sysobjects WHERE name='tb_carimbo' and xtype='U')
 		idcartela int,
 		idloja int,
 		idcliente int,
+		idlojista int,
 		datacarimbo date,
 		resgatado char(1) DEFAULT 0, /*NÃO TROCADO é 0 e TROCADO é 1 (true e false)*/
 		FOREIGN KEY(idcartela) REFERENCES tb_cartela(id),
 		FOREIGN KEY(idloja) REFERENCES tb_loja(id),
-		FOREIGN KEY(idcliente) REFERENCES tb_cliente(id)
+		FOREIGN KEY(idcliente) REFERENCES tb_cliente(id),
+		FOREIGN KEY(idlojista) REFERENCES tb_lojista(id)
 	);
 go
