@@ -1,0 +1,54 @@
+﻿@model List<PromocaoViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Promoções</h2>
+
+<br />
+<h2 style="color:black;">Lista de promoções</h2>
+
+
+
+<br /> <br />
+
+<div style="overflow-x:auto;">
+
+    <a href="/promocao/create" class="glyphicon glyphicon-plus">Adicionar</a>
+    <table class="table table-bordered">
+        <tr>
+
+
+            <th scope="col">Nome</th>
+            <th scope="col">Data de Início</th>
+            <th scope="col">Data fim da Promção</th>
+            <th scope="col">Número de Carimbos</th>
+            <th scope="col">Empresa</th>
+
+        </tr>
+
+        @foreach (var promocao in Model)
+        {
+
+
+            <td><a href="cliente/Edit?id=@promocao.Id" class="glyphicon glyphicon-pencil"></a> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+            <td><a href="javascript:apagarcliente(@promocao.Id)" class="glyphicon glyphicon-trash"></a> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+
+            <tr>
+                <td>@promocao.Nome</td>
+                <td>@promocao.DataInicio</td>
+                <td>@promocao.DataFim</td>
+                <td>@promocao.Carimbos</td>
+                <td>@promocao.IdMestre</td>
+            </tr>
+            <tr></tr>
+        }
+    </table>
+
+</div>
+<script>
+    function apagarcliente(id) {
+        if (confirm('Confirma a exclusão do registro?'))
+            location.href = 'promocao/Delete?id=' + id;
+    }
+</script>

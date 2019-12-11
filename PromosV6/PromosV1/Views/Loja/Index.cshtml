@@ -1,0 +1,55 @@
+﻿@model List<LojaViewModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<br />
+<h2 style="color:black;">Lista de lojas</h2>
+
+
+                
+<br /> <br />
+
+<div style="overflow-x:auto;">
+    
+        <a href="/loja/create" class="glyphicon glyphicon-plus">Adicionar</a>
+        <table class="table table-bordered">
+            <tr>
+
+
+                <th scope="col">CNPJ</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Cidade</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Empresa</th>
+            </tr>
+
+            @foreach (var loja in Model)
+            {
+
+
+                <td><a href="loja/Edit?id=@loja.Id" class="glyphicon glyphicon-pencil"></a> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+                <td><a href="javascript:apagarcliente(@loja.Id)" class="glyphicon glyphicon-trash"></a> &nbsp; &nbsp; &nbsp; &nbsp;</td>
+
+                <tr>
+                    <td>@loja.Cnpj</td>
+                    <td>@loja.Nome</td>
+                    <td>@loja.Cidade</td>
+                    <td>@loja.Estado</td>
+                    <td>@loja.IdEmpresa</td>
+                </tr>
+                <tr></tr>
+            }
+        </table>
+
+</div>
+<script>
+    function apagarcliente(id) {
+        if (confirm('Confirma a exclusão do registro?'))
+            location.href = 'loja/Delete?id=' + id;
+    }
+</script>
+
+

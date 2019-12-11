@@ -1,0 +1,61 @@
+﻿@model List<ClienteViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<h2 style="color:black;">Lista de Clientes</h2>
+
+
+
+<br /> <br />
+
+       <div style="overflow-x:auto;">
+
+           <a href="/cliente/create" class="glyphicon glyphicon-plus">Adicionar</a>
+
+           <a href="" class="glyphicon glyphicon-plus">Adicionar Carimbos</a>
+
+
+           <table class="table table-bordered">
+               <tr>
+
+
+                   <th scope="col">CPF</th>
+                   <th scope="col">Nome</th>
+                   <th scope="col">E-mail</th>
+                   <th scope="col">Telefone</th>
+                   <th scope="col">Cidade</th>
+                   <th scope="col">Estado</th>
+
+               </tr>
+
+               @foreach (var cliente in Model)
+               {
+
+
+                   <a href="cliente/Edit?id=@cliente.Id" class="glyphicon glyphicon-pencil"></a>
+                   <a href="javascript:apagarcliente(@cliente.Id)" class="glyphicon glyphicon-trash"></a> 
+
+                   <tr>
+                       <td>@cliente.Cpf</td>
+                       <td>@cliente.Nome</td>
+                       <td>@cliente.Email</td>
+                       <td>@cliente.Telefone</td>
+                       <td>@cliente.Cidade</td>
+                       <td>@cliente.Estado</td>
+                       
+                       <td class="hidden">@cliente.Senha</td>
+                   </tr>
+                   <tr></tr>
+               }
+           </table>
+
+       </div>
+<script>
+    function apagarcliente(id) {
+        if (confirm('Confirma a exclusão do registro?'))
+            location.href = 'cliente/Delete?id=' + id;
+    }
+</script>
+
