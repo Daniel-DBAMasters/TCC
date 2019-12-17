@@ -1,6 +1,7 @@
-# TCC \n
-Integrantes: \n
-	Daniel Augusto Scordamaglio \n
-	Denilson Murilo Silva \n
+# TCC 
+Integrantes: 
+
+	Daniel Augusto Scordamaglio 
+	Denilson Murilo Silva 
 	
 https://github.com/Daniel-DBAMasters/TCC
